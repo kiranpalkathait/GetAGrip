@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
-        <title>Flask Tutorial (Part 1)</title>
+        <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}" />
+       <title> {% block title %}{% endblock %}</title>
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,7 +24,6 @@
         </div>
       </div>
     </div>
-    <script src="../assets/js/jquery.js"></script>
 
         <div class="container">
             {% block content %}
