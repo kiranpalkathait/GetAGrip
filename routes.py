@@ -20,6 +20,11 @@ def faq():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/jonathan')
+def jonathan():
+    return render_template('jonathan.html')
+
 if __name__ == '__main__':
     app.run()
 
