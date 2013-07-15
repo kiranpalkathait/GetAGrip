@@ -5,13 +5,15 @@
 {% endblock  %}
 
 {% block content  %}
-    <div allign="left">
+    <div align="left">
         <form>
             Full Name: <input type="text" name="Fullname"><br>
             Email: <input type="text" name="Email"><br>
             Your Comment:<br>
-            <textarea rows="15" cols="120" name="YourComment">
-            </textarea><br>
+                <div>
+                    <textarea name="YourComment" rows="7" cols="160">
+                    </textarea>
+                </div><br>
             <button type="submit" formaction="http://....//">Submit</button>
         </form>
     </div>
