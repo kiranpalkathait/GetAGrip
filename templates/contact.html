@@ -5,5 +5,14 @@
 {% endblock  %}
 
 {% block content  %}
-    <div class="hero-unit"><h1>Contact Us</h1></div>
+    <div>
+        <form>
+            Full Name: <input type="text" name="Fullname"><br>
+            Email: <input type="text" name="Email"><br>
+            Your Comment:<br>
+                <textarea name="YourComment" col="60" rows="7">
+                </textarea>
+            <button type="submit" formaction="http://....//">Submit</button>
+        </form>
+    </div>
 {% endblock  %}
