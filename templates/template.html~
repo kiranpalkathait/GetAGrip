@@ -23,17 +23,13 @@
 	.centered-pills a { float:left; }
         </style>
         <title> {% block title %}{% endblock %}</title>
-        
-        {% block head %}
-        {% endblock %}
-
     </head>
     <body>
         <h1 align="center">~~ Logo Strip Thing!! ~~</h1>
         </br>
         <div class="pills">
 	<div class="centered-pills">
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills" align="center">
             <li class="active"><a href="/">HOME</a></li>
             <li><a href="/store">STORE</a></li>
             <li><a href="/about">ABOUT US</a></li>
@@ -41,8 +37,8 @@
             <li><a href="/contact">CONTACT US</a></li>
          
 	<div class="pull-right">
-    <a href="#logIn" role="button" class="btn btn-success" data-toggle="modal">Log In</a>	
-    <a href="#signUp" role="button" class="btn btn-primary" data-toggle="modal">Sign Up</a>	
+		<button class="btn btn-success" type="button">Log In</button>
+		<button class="btn btn-primary" type="button">Sign Up</button> 
 	</div>       
         </div>
 	</ul>
@@ -50,35 +46,5 @@
         <div class="container">
             {% block content %} {% endblock %}
         </div>
-
-<div class="modal hide fade" id="logIn">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Log In</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p
-  </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Log In</button>
-  </div>
-</div>
-
-<div class="modal hide fade" id="signUp">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Register Now</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p
-  </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Register</button>
-  </div>
-</div>
-
-    
     </body>
 </html>
