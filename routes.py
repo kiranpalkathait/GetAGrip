@@ -21,11 +21,16 @@ def faq():
 def contact():
     return render_template('contact.html')
 
-@app.route('/jonathan')
-def jonathan():
-    return render_template('jonathan.html')
-
+@app.route('/log',methods=['GET,POST'])
+def log():
+    error = none
+    if request.method() == 'POST':
+        if request.form['username'] != 'admin' or request.form['pasword'] != 'admin':
+            error = "WRONG"
+        else:
+            return redirect(url_for('hello'))
+    return render_template('/log')
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
 
 
