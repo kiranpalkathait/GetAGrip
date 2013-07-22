@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import *
 app = Flask(__name__)
 
 @app.route('/')
@@ -23,13 +23,17 @@ def contact():
 
 @app.route('/log', methods=['GET','POST'])
 def log():
-    error = none
+    error = None
     if request.method == 'POST':
         if request.form['username'] != 'admin' or request.form['pasword'] != 'admin':
-            error = "WRONG"
+            error = 'Invalid Credentials. Please try again.'
         else:
             return redirect(url_for('hello'))
-    return render_template('log.html')
+    return render_template('log.html', error=error)
+
+@app.route('/hello')
+def hello():
+    render_template('hello.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
