@@ -3,6 +3,16 @@
     <head>
         <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}" />
         <style>
+        body
+        {
+        	background-image:url('http://fotobg.ru/upload/img1347179986.jpg');
+        }
+        .container
+    	{
+    	background-color: white;
+    	width: 1000px;
+    	}
+    	
                .navbar-wrapper {
       position: absolute;
       top: 0;
@@ -21,6 +31,8 @@
 	.centered-pills ul.nav-pills { display:inline-block; }
 	.centered-pills li { display:inline; }
 	.centered-pills a { float:left; }
+	
+	
         </style>
         <title> {% block title %}{% endblock %}</title>
         
@@ -28,7 +40,9 @@
         {% endblock %}
 
     </head>
+    
     <body>
+    <div class"container"
         <h1 align="center"><img src="http://i.imgur.com/RBsuaPK.png" width="250" height="75"></h1>
         </br>
         <br>
@@ -82,7 +96,7 @@
     <button class="btn btn-primary">Register</button>
   </div>
 </div>
-
-    
+	</div>
     </body>
+    
 </html>
