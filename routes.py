@@ -4,14 +4,6 @@ app = Flask(__name__)
 
 app.secret_key = "my precious"
 
-def login_required(test):
-    @wraps(test)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return test(*args, **kwargs)
-        else:
-            return redirect(url_for('home'))
-
 @app.route('/', methods=['GET', 'POST'])
 def home():
     error = None
@@ -46,7 +38,6 @@ def contact():
     return render_template('contact.html')
 
 @app.route('/success')
-@login_required
 def success():
     return render_template('success.html')
 
