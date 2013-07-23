@@ -1,9 +1,32 @@
 from flask import *
+from functools import wraps
 app = Flask(__name__)
 
-@app.route('/')
+app.secret_key = "my precious"
+
+def login_required(test):
+    @wraps(test)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return test(*args, **kwargs)
+        else:
+            return redirect(url_for('home'))
+
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('home.html')
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            session['logged_in'] = True
+            return redirect(url_for('success'))
+    return render_template('home.html', error=error)
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect(url_for('home'))
 
 @app.route('/store')
 def store():
@@ -15,25 +38,27 @@ def about():
 
 @app.route('/faq')
 def faq():
+    title="FAQ"
     return render_template('faq.html')
 
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
 
+@app.route('/success')
+@login_required
+def success():
+    return render_template('success.html')
+
 @app.route('/log', methods=['GET','POST'])
 def log():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['pasword'] != 'admin':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
             error = 'Invalid Credentials. Please try again.'
         else:
-            return redirect(url_for('hello'))
+            return redirect(url_for('success'))
     return render_template('log.html', error=error)
-
-@app.route('/hello')
-def hello():
-    render_template('hello.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
