@@ -22,7 +22,7 @@ def logout():
 
 @app.route('/store')
 def store():
-    return render_template('store.html')
+    return render_template('store.html',title="Store")
 
 @app.route('/about')
 def about():
