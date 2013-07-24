@@ -1,5 +1,6 @@
 from flask import *
 from functools import wraps
+
 app = Flask(__name__)
 
 app.secret_key = "my precious"
@@ -22,7 +23,22 @@ def logout():
 
 @app.route('/store')
 def store():
-    return render_template('store.html')
+    user = { 'nickname': 'Miguel' } # fake user
+
+    comments = [ # fake array of posts
+        { 
+            'author': { 'nickname': 'John' }, 
+            'body': 'Beautiful day in Portland!' 
+        },
+        { 
+            'author': { 'nickname': 'Susan' }, 
+            'body': 'The Avengers movie was so cool!' 
+        }
+            ]
+    return render_template("store.html",
+        title = 'Store',
+        user = user,
+        comments = comments)
 
 @app.route('/about')
 def about():
