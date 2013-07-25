@@ -2,8 +2,7 @@ from flask import *
 from functools import wraps
 
 app = Flask(__name__)
-
-app.secret_key = "my precious"
+app.config.from_object('config')
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
