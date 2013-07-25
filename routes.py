@@ -1,5 +1,6 @@
 from flask import *
 from functools import wraps
+from forms import LoginForm
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -13,7 +14,7 @@ def home():
         else:
             session['logged_in'] = True
             return redirect(url_for('success'))
-    return render_template('home.html', error=error)
+    return render_template('home.html', error=error, title="Home")
 
 @app.route('/logout')
 def logout():
@@ -41,20 +42,19 @@ def store():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title="About Us")
 
 @app.route('/faq')
 def faq():
-    title="FAQ"
-    return render_template('faq.html')
+    return render_template('faq.html', title="FAQ")
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template('contact.html', title="Contact Us")
 
 @app.route('/success')
 def success():
-    return render_template('success.html')
+    return render_template('success.html', title="Success!")
 
 @app.route('/log', methods=['GET','POST'])
 def log():
@@ -64,7 +64,12 @@ def log():
             error = 'Invalid Credentials. Please try again.'
         else:
             return redirect(url_for('success'))
-    return render_template('log.html', error=error)
+    return render_template('log.html', error=error, title="Log In")
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    form = LoginForm()
+    return render_template('login.html', form=form, title="Sign In")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
