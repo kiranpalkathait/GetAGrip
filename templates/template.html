@@ -58,14 +58,21 @@
             <li><a href="/contact">CONTACT US</a></li>
          
 	<div class="pull-right">
-{% if logged_in %}    <a href="#logIn" role="button" class="btn btn-success" data-toggle="modal">Log In</a>
-{% else %}    <a href="/logout" role="button" class="btn btn-success" data-toggle="modal">Sign Out</a>
-{% endif %}
+    <a href="#logIn" role="button" class="btn btn-success" data-toggle="modal">Log In</a>
     <a href="#signUp" role="button" class="btn btn-primary" data-toggle="modal">Sign Up</a>	
 	</div>       
         </div>
 	</ul>
 	</div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul><hr/>
+    {% endif %}
+    {% endwith %}
             {% block content %} {% endblock %}
         </div>
         
@@ -78,18 +85,13 @@
   </div>
   <br>
   <div class="modal-body">
-	{% if error %}
-        	<p class=error><strong>Error:</strong> {{ error }}
-    	{% endif %}
-
-    <form action="" method=post>
-        <dl>
-            <dt>Username:
-            <dd><input type=text name=username value="{{ request.form.username }}">
-
-            <dt>Password:
-            <dd><input type=password name=password>
-        </dl>
+<form action="" method="post" name="Login">
+        {{form.hidden_tag()}}
+        <p>
+                Please enter your OpenID:<br/>
+                {{form.openid(size=80)}}<br/>
+        </p>
+        <p>{{form.remember_me}} Remember Me</p>
    </div>
     <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -103,7 +105,7 @@
     <h3>Register Now</h3>
   </div>
   <div class="modal-body">
-    <p>One fine body…</p
+	<p>One fine body....</p>
   </div>
     <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>

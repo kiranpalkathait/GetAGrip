@@ -7,19 +7,8 @@ app.config.from_object('config')
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            session['logged_in'] = True
-            return redirect(url_for('success'))
-    return render_template('home.html', error=error, title="Home")
-
-@app.route('/logout')
-def logout():
-    session.pop('logged_in', None)
-    return redirect(url_for('home'))
+    form = LoginForm()
+    return render_template('home.html', title="Home", form=form)
 
 @app.route('/store')
 def store():
@@ -56,22 +45,14 @@ def contact():
 def success():
     return render_template('success.html', title="Success!")
 
-@app.route('/log', methods=['GET','POST'])
-def log():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('success'))
-    return render_template('log.html', error=error, title="Log In")
-
 @app.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
-    return render_template('login.html', form=form, title="Sign In")
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('login.html', form=form, title="Sign In", providers = app.config['OPENID_PROVIDERS'])
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
 
 
