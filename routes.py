@@ -1,25 +1,14 @@
 from flask import *
 from functools import wraps
+from forms import LoginForm
 
 app = Flask(__name__)
-
-app.secret_key = "my precious"
+app.config.from_object('config')
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            session['logged_in'] = True
-            return redirect(url_for('success'))
-    return render_template('home.html', error=error)
-
-@app.route('/logout')
-def logout():
-    session.pop('logged_in', None)
-    return redirect(url_for('home'))
+    form = LoginForm()
+    return render_template('home.html', title="Home", form=form)
 
 @app.route('/store')
 def store():
@@ -42,32 +31,28 @@ def store():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title="About Us")
 
 @app.route('/faq')
 def faq():
-    title="FAQ"
-    return render_template('faq.html')
+    return render_template('faq.html', title="FAQ")
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template('contact.html', title="Contact Us")
 
 @app.route('/success')
 def success():
-    return render_template('success.html')
+    return render_template('success.html', title="Success!")
 
-@app.route('/log', methods=['GET','POST'])
-def log():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('success'))
-    return render_template('log.html', error=error)
+@app.route('/login', methods=['GET','POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('login.html', form=form, title="Sign In", providers = app.config['OPENID_PROVIDERS'])
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
 
 
