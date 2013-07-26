@@ -5,14 +5,29 @@
 {% endblock  %}
 
 {% block content  %}
-    <div>
-        <form>
-            Full Name: <input type="text" name="Fullname"><br>
-            Email: <input type="text" name="Email"><br>
-            Your Comment:<br>
-                <textarea name="YourComment" col="60" rows="7">
-                </textarea>
-            <button type="submit" formaction="http://....//">Submit</button>
-        </form>
+<br>
+<br>
+<div class="container-fluid" style="margin: 1px 40px;">
+  <div class="row-fluid">
+    <div class="span2" style="background-color:red;height:250px;width:200px;float:left; margin:0px 20px;">
+      <b><h2>Better-Grip LLC</b></h2>
+		<br>
+		Insert picture
+		<br>
+		info@bettergrip.com
     </div>
+        <form>
+            <input align= "center" style="width: 510px; height:20px margin: 20px;"type="text" name="Fullname" placeholder="Name"><br>
+        	<input align ="center" style="width: 510px; height:20px" type="text" name="Email" placeholder="Email"><br>
+            <textarea align="left" style="width: 510px; height:120px" name="YourComment" >
+                </textarea>
+                <br>
+            <button align="right" type="submit" formaction="http://....//">Submit</button>
+        </form>
+  </div>
+</div>
+
+
+    
+</div>
 {% endblock  %}
