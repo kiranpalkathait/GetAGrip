@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}" />
+        <style>
+        body
+        {
+        	background-image:url('http://fotobg.ru/upload/img1347179986.jpg');
+        }
+        .container
+    	{
+    	background-color: white;
+    	width: 1000px;
+		padding: 10px; 15px;
+		}
+		
+		
+     .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 50px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+     .pills {
+    margin: 0 auto;
+    padding: 0px;
+    width: 1000px;
+}       
+	.centered-pills { text-align:center; }
+	.centered-pills ul.nav-pills { display:inline-block; }
+	.centered-pills li { display:inline; }
+	.centered-pills a { float:left; }
+	
+	.serif{font-family:Times New Roman,Times,serf;}
+	.psansserif{font-family:Arial,Helvetica,sans-serif;}
+	
+	
+        </style>
+        <title>{{ title }} :: Better Grip</title>
+        
+        {% block head %}
+        {% endblock %}
+
+    </head>
+    
+    <body>
+  
+    <div class="container">
+        <h1 align="center"><img src="http://i.imgur.com/RBsuaPK.png" width="250" height="75"></h1>
+        <br>
+        <div class="pills">
+	<div class="centered-pills">
+        <ul class="nav nav-pills serif">
+            <li class="active"><a href="/">HOME</a></li>
+            <li><a href="/store">STORE</a> </li>
+            <li><a href="/about">ABOUT US</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/contact">CONTACT US</a></li>
+         
+	<div class="pull-right">
+    <a href="#logIn" role="button" class="btn btn-success" data-toggle="modal">Log In</a>
+    <a href="#signUp" role="button" class="btn btn-primary" data-toggle="modal">Sign Up</a>	
+	</div>       
+        </div>
+	</ul>
+	</div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul><hr/>
+    {% endif %}
+    {% endwith %}
+            {% block content %} {% endblock %}
+        </div>
+        
+<br>
+
+<div class="modal hide fade" id="logIn">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Log In</h3>
+  </div>
+  <br>
+  <div class="modal-body">
+<form action="" method="post" name="Login">
+        {{form.hidden_tag()}}
+        <p>
+                Please enter your OpenID:<br/>
+                {{form.openid(size=80)}}<br/>
+        </p>
+        <p>{{form.remember_me}} Remember Me</p>
+   </div>
+    <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Log In</button>
+  </div>
+</div>
+
+<div class="modal hide fade" id="signUp">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Register Now</h3>
+  </div>
+  <div class="modal-body">
+	<p>One fine body....</p>
+  </div>
+    <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Register</button>
+  </div>
+</div>
+	</div>
+	</p>
+    </body>
+    
+</html>

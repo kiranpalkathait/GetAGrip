@@ -1,0 +1,160 @@
+{% extends "template.html" %}
+
+{% block title %}
+   Home :: GetAGrip
+{% endblock %}
+
+{% block content %}
+    <div id="homeCarousel" class="carousel slide">
+
+    <!-- Carousel items -->
+    
+    <div class="carousel-inner">
+        <div align="center" class="active item">
+            <img src="/static/Pictures/mimi1.jpg" alt="" style="width: 980px; height: 500px;"/>
+            
+        </div>
+
+        <div class="item" align="center">
+            <img src="/static/Pictures/mimi2.jpg" alt="" style="width: 980px; height: 500px;"/>
+        	<div class="container">
+           	 
+            </div>
+        </div>
+
+        <div class="item" align="center">
+            <img src="/static/Pictures/mimi3.jpg" alt="" style="width: 980px; height: 500px;"/>
+            
+        </div>
+    </div>
+    
+    <!-- Carousel nav -->
+        <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+    <script src="{{url_for('static',filename='bootstrap/js/bootstrap.min.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').carousel();
+           });
+    </script>
+
+
+	<!-- Four columns of text below the carousel -->
+	
+	<div class="row">
+	
+		<div class="span3">
+			<img class="img-circle" src="static/Pictures/mimi2.jpg" style="width: 140px; height: 140px;" align="center">
+			<h2 align="center"> No Slip Grip</h2>
+			<p align="center">
+				"High performance silicone compounds mold the product to your steering wheel, giving you a no slip grip for every driving experience."
+			</p>
+			<p align="center">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+				<a class="btn" href="#firstFeature">View details &raquo;</a></p>
+			</p>
+		</div>
+		
+		<div class="span3">
+			<img class="img-circle" src="static/Pictures/mimi2.jpg" style="width: 140px; height: 140px;" align="center" >
+			<h2 align="center"> Weather Resistant</h2> 
+			<p align="center"> "Get-A-Grip is durable and long lasting through extreme temperature changes, as well as varying weather conditions without losing its color, elasticity, shape, and flexibility."</p>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<p align="center"><a class="btn" href="#secondFeature"> View Details &raquo;</a></p>
+		</div>
+		
+		<div class="span3">
+			<img class="img-circle" src="static/Pictures/mimi2.jpg" style="width: 140px; height: 140px;" align="center" >
+			<h2 align="center">Compact, Flexible, Versatile</h2>
+			<p align="center">"Innovative in its material and design, Get-A-Grip is less bulky than other materials and takes up less space. Store it in any compartment, or take it on the go! Its elasticity allows it to be used virtually anywhere and everywhere."</p>
+			<br>
+			<p align="center"><a class="btn" href="#thirdFeature">View Details &raquo;</a></p>
+		</div>
+		
+		<div class="span3">
+			<img class="img-circle" src="static/Pictures/mimi2.jpg" style="width: 140px; height: 140px;" align="center">
+			<h2 align="center">Easy to use, Easy to clean</h2>
+			<p align="center">"Unlike other products, Get-A-Grip can be applied in just three seconds! Simply place the product on the top of the wheel, pull down on the sides, and snap the bottom on to complete. When you're done, unsnap it buy pulling on the bottom, and then throw it in the dish washer to wash! It is 100% dishwasher safe and anti-bacterial."</p>
+			<p align="center"><a class="btn" href="#fourthFeature">View Details &raquo;</a></p>
+		</div>
+		
+	</div>
+	<br>
+	<br>
+	
+	
+	<!-- START THE FEATURETTES -->
+	<a name="firstFeature"> </a>
+	<hr class="featurette-divider">
+	<br>
+	<div class="featurette">
+
+		<img class="featurette-impage pull-right" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTF1wzUXZMhkGljMxFWc9l0Yqe9W90xJWZjmyPYLvjPzWxoJIpG" style="width: 350px; height: 350px;">
+		<h2 class="featurette-heading">
+			Get A Grip.
+			<span class="muted">Lose A Slip.</span>
+		</h2>
+		<p class="lead">
+			Get-A-Grip is made from high performance platinum core liquid silicone compounds; the superior physical properties of the silicone create exceptionally strong tear-resistant and elastic yet soft to touch material that provides a no-slip grip for your steering wheel. Other products are typically made from big and bulky substances such as memory foam or leather, which can easily slip from the wheel and the drivers’ grasp. Our products fit securely to the wheel, and produces a soft yet firm grip, making for safer and more efficient driving. Although each driver has his or her own driving experiences and driving habits, Get-A-Grip is a compatible fit for any and every driver. The smooth and flawless feel of Get-A-Grip makes drivers want to keep their hands on the wheel.
+		</p>
+	</div>
+	<br>
+	<a name="secondFeature"> </a>
+	<hr class=featurette-divider">
+	<br>
+	<div class="featurette">
+		<img class="featurette-image pull-left" src="http://static.ddmcdn.com/gif/dashboard-display-1.jpg" style="width: 350px; height: 350px;">
+		<h2 class="featurette-heading"> 
+			Steering Wheel too hot or too cold?
+			<span class="muted">No problem. Microwaveable in the winter, Refrigerated in the summer.</span>
+		</h2>
+		<p class="lead">
+			In extreme temperatures, steering wheels often get too hot or too cold to touch, making the driving experience more difficult and less enjoyable. With Get-A-Grip, our products are temperature-resistant and revert back to room temperatures within minutes, providing a cooler grip in the summer and a warmer grip in the winter. After many studies, including freezing the product for 24 hours, placing the product in boiling water for 30 minutes, and leaving the product out in the sun for 30 days, our Get-A-Grip steering wheel grip successfully retained its shape, color, size, and flexibility. 
+		</p>
+	</div>
+	<br>
+	<a name="thirdFeature"> </a>
+	<hr class=featurette-divider">
+	<br>
+	<div class=featurette"> 
+	
+		<img class="featurette-image pull-right" src="http://img.directindustry.com/images_di/photo-g/silicone-rubber-sheet-vmq-50843-2416541.jpg" style="width: 350px; height: 350px;">
+		<h2 class="featurette-heading">
+			Sleek and On-The-Go.
+			<span class="muted"> Carry it anywhere and everywhere. It stretches to fit and contracts to store.</span>
+		<p class="lead">
+			Get-A-Grip steering grips fit most standard cars. The novelty of using silicone in our products is the flexibility and versatility it offers. Instead of the bulkiness other materials such as leather have, our silicone products are easier to store and more compact. The innovative structure of the grips allows the product to be folded and takes up minimal space in any compartment. Soft yet incredibly durable, Get-A-Grip stretches up to two inches to fit any wheel size, object, or household item while providing a no-slip grip! No matter how you use the grip, it does not lose it’s compactness, elasticity, flexibility, and versatility. 
+		</p>
+	</div>
+	<br>
+	<a name="fourthFeature"> </a>
+	<hr class=featurette-divider">
+	<br>
+	<div class=featurette">
+		<img class="featurette-image pull-left" src="http://i.imgur.com/PhkbBJ6.png" style="width: 350px; height: 350px;">
+		<h2 class="featurette-heading">
+			Snap it on in under three seconds.
+			<span class="muted"> When you're done, throw it into the dishwasher to clean.</span>
+		</h2>
+		<p class="lead">
+			Other steering wheel grips are difficult to put on and slip off easily if not put on correctly. However, putting Get-A-Grip takes just three seconds to slip on! The silicone properties of Get-A-Grip allow the grip to mold perfectly to your steering wheel and stretches to fit tightly and snugly. See our instructional video here. When it’s time to wash it, snap it off and throw it in the dishwasher. It’s proven to be dishwasher safe and prevents most bacteria from spreading. 
+		</p>
+	</div>
+	
+	<!-- /END OF FEATURETTES -->		
+</div>
+{% endblock %}
+
+
