@@ -1,9 +1,5 @@
 {% extends "template.html" %}
 
-{% block title %}
-   Home :: GetAGrip
-{% endblock %}
-
 {% block content %}
     <div id="homeCarousel" class="carousel slide">
 
@@ -32,7 +28,6 @@
         <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
     </div>
-    <script src="{{url_for('static',filename='bootstrap/js/bootstrap.min.js')}}"></script>
     <script>
         $(document).ready(function(){
             $('.carousel').carousel();
@@ -154,6 +149,8 @@
 	</div>
 	
 	<!-- /END OF FEATURETTES -->		
+
+
 </div>
 {% endblock %}
 
