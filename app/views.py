@@ -54,6 +54,11 @@ def login():
         return redirect('/success')
     return render_template('login.html', form=form, title="Sign In", providers = app.config['OPENID_PROVIDERS'])
 
+@app.route('/producta')
+def producta():
+    form= LoginForm()
+    return render_template('producta.html', form=form, title="Product A")
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
 
