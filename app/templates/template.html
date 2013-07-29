@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <script src="static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 	
+        <script src="{{url_for('static',filename='bootstrap/js/bootstrap.min.js')}}"></script>
         <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}" />
         <style>
         body
@@ -111,7 +112,13 @@ letter-spacing: 1px;
   </div>
   <br>
   <div class="modal-body">
-	one fine body...
+<form action="" method="post" name="Login">
+        {{form.hidden_tag()}}
+        <p>
+                Please enter your OpenID:<br/>
+                {{form.openid(size=80)}}<br/>
+        </p>
+        <p>{{form.remember_me}} Remember Me</p>
    </div>
     <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
