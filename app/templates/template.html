@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <script src="{{url_for('static',filename='bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}" />
         <style>
@@ -15,8 +14,21 @@
     	width: 1000px;
 		padding: 10px; 15px;
 		}
+<<<<<<< HEAD
 
 
+=======
+		.round {border-radius: 25px;
+		}
+		p.marginnav
+{
+margin-top:0px;
+margin-bottom:0px;
+margin-right:10px;
+margin-left:10px;
+}
+		
+>>>>>>> 10e3d68b5d16995c7b3e5af88e43cbe966f5915a
      .navbar-wrapper {
       position: absolute;
       top: 0;
@@ -26,6 +38,14 @@
       margin-top: 50px;
       margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
+    .nav-list-item a
+{
+text-decoration: none;
+color: #000000;
+font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+font-size: medium;
+letter-spacing: 1px;
+}
      .pills {
     margin: 0 auto;
     padding: 0px;
@@ -35,11 +55,19 @@
 	.centered-pills ul.nav-pills { display:inline-block; }
 	.centered-pills li { display:inline; }
 	.centered-pills a { float:left; }
+<<<<<<< HEAD
 
 	.serif{font-family:Times New Roman,Times,serf;}
 	.psansserif{font-family:Arial,Helvetica,sans-serif;}
 
 
+=======
+	
+	.serif{font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;}
+	.psansserif{font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;}
+	
+	
+>>>>>>> 10e3d68b5d16995c7b3e5af88e43cbe966f5915a
         </style>
         <title>{{ title }} :: Better Grip</title>
         
@@ -49,36 +77,42 @@
     </head>
     
     <body>
-  
-    <div class="container">
+  <br>
+  <br>
+    <div class="container round">
         <h1 align="center"><img src="http://i.imgur.com/RBsuaPK.png" width="250" height="75"></h1>
         <br>
         <div class="pills">
 	<div class="centered-pills">
-        <ul class="nav nav-pills serif">
-            <li class="active"><a href="/">HOME</a></li>
+        <ul class="nav nav-pills serif nav-list-item a">
+            <li><a href="/">HOME</a></li>
             <li><a href="/store">STORE</a> </li>
             <li><a href="/about">ABOUT US</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact">CONTACT US</a></li>
          
 	<div class="pull-right">
-    <a href="#logIn" role="button" class="btn btn-success" data-toggle="modal">Log In</a>
+    <a href="#logIn" role="button" class="btn btn-success marginnav" data-toggle="modal" style="margin: 1px 10px;">Log In</a>
     <a href="#signUp" role="button" class="btn btn-primary" data-toggle="modal">Sign Up</a>	
 	</div>       
-        </div>
+    </div>
 	</ul>
-	</div>
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-    {% for message in messages %}
-        <li>{{ message }} </li>
-    {% endfor %}
-    </ul><hr/>
-    {% endif %}
-    {% endwith %}
-            {% block content %} {% endblock %}
+<br>
+<br>
+            {% block content %} 
+      
+  {% endblock %}
+  	<hr class="featurette-divider">
+        	<footer> <!-- site wide footer -->
+    <nav>
+      <p align="right">
+      		<a href="/credits.html">Credits</a> —
+             <a href="/tos.html">Terms of Service</a> —
+             <a herf="/index.html">Blog Index</a>
+      </p>
+    </nav>
+    <p align="center">Copyright © 2013 Humphrey</p>
+  </footer>
         </div>
         
 <br>
@@ -90,13 +124,7 @@
   </div>
   <br>
   <div class="modal-body">
-<form action="" method="post" name="Login">
-        {{form.hidden_tag()}}
-        <p>
-                Please enter your OpenID:<br/>
-                {{form.openid(size=80)}}<br/>
-        </p>
-        <p>{{form.remember_me}} Remember Me</p>
+	one fine body...
    </div>
     <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -116,9 +144,11 @@
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     <button class="btn btn-primary">Register</button>
   </div>
+  
 </div>
 	</div>
 	</p>
+
     </body>
     
 </html>
