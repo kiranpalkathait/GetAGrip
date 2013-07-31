@@ -6,45 +6,18 @@
 {% endblock %}
 
 {% block content %}
-  
-  
-  
-  
+ <div class="hero-unit"><h1>Store</h1></div> <hr/><br/>
+    <div class="span8 offset2">	
+	<div class="media hero-unit">
+    {% for comment in comments %}
+	    <a  href="#">
+		<img class="media-object" src="/static/Pictures/download.png">
+	    </a>
+		<div class="media-body">
+		<h4 class="media-heading">{{ comment.author.nickname }}</h4>
+		<p> {{ comment.body }} </p>
+		<br/><hr/>
     {% endfor %}
 	</div>
-    </div>
-<div class="modal hide fade" id="logIn">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Log In</h3>
-  </div>
-  <br>
-  <div class="modal-body">
-<form action="" method="post" name="Login">
-        {{form.hidden_tag()}}
-        <p>
-                Please enter your OpenID:<br/>
-                {{form.openid(size=80)}}<br/>
-        </p>
-        <p>{{form.remember_me}} Remember Me</p>
-   </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Log In</button>
-  </div>
-</div>
-
-<div class="modal hide fade" id="signUp">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Register Now</h3>
-  </div>
-  <div class="modal-body">
-        <p>One fine body....</p>
-  </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Register</button>
-  </div>
-</div>
+    </div>  
 {% endblock %}
