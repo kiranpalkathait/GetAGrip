@@ -1,6 +1,11 @@
-from flask import render_template, flash, redirect
-from app import app
+from flask import render_template, flash, redirect, session, url_for, request, g
 from forms import LoginForm
+from models import User, ROLE_USER, ROLE_ADMIN
+from app import app, db, lm, oid
+
+@lm.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -48,10 +53,14 @@ def success():
     return render_template('success.html', title="Success!",form=form)
 
 @app.route('/login', methods=['GET','POST'])
+@oid.loginhandler
 def login():
+    if g.user is not None and g.user.is_authenticated():
+        return redirect(url_for('success'))
     form = LoginForm()
     if form.validate_on_submit():
-        return redirect('/success')
+        session['remember_me'] = form.remember_me.data
+        return oid.try_login(form.openid.data, ask_for = ['nickname', 'email'])
     return render_template('login.html', form=form, title="Sign In", providers = app.config['OPENID_PROVIDERS'])
 
 @app.route('/producta')
