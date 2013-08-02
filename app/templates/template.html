@@ -73,15 +73,19 @@ letter-spacing: 1px;
         <div class="pills">
 	<div class="centered-pills">
         <ul class="nav nav-pills serif nav-list-item a">
-            <li><a href="/">HOME</a></li>
-            <li><a href="/store">STORE</a> </li>
-            <li><a href="/about">ABOUT US</a></li>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/contact">CONTACT US</a></li>
+            <li><a href="{{ url_for('index') }}">HOME</a></li>
+            <li><a href="{{ url_for('store') }}">STORE</a> </li>
+            <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
+            <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+            <li><a href="{{ url_for('contact') }}">CONTACT US</a></li>
          
 	<div class="pull-right">
-    <a href="#logIn" role="button" class="btn btn-success marginnav" data-toggle="modal" style="margin: 1px 10px;">Log In</a>
-    <a href="#signUp" role="button" class="btn btn-primary" data-toggle="modal">Sign Up</a>	
+    {% if g.user.is_authenticated() %}
+        <a href="{{ url_for('logout') }}" role="button" class="btn btn-primary">Log Out</a>
+    {% else %}
+        <a href="#logIn" role="button" class="btn btn-success marginnav" data-toggle="modal" style="margin: 1px 10px;">Log In</a>
+        <a href="#signUp" role="button" class="btn btn-primary" data-toggle="modal">Sign Up</a>
+    {% endif %}	
 	</div>       
     </div>
 	</ul>

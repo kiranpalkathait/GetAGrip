@@ -8,7 +8,7 @@ class User(db.Model):
     nickname = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(100), index=True, unique=True)
     role = db.Column(db.SmallInteger, default=ROLE_USER)
-    posts = db.relationship('Comments', backref='author', lazy='dynamic')
+    posts = db.relationship('Comment', backref='author', lazy='dynamic')
 
     def is_authenticated(self):
         return True
