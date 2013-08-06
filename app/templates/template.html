@@ -78,15 +78,8 @@ letter-spacing: 1px;
             <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
             <li><a href="{{ url_for('faq') }}">FAQ</a></li>
             <li><a href="{{ url_for('contact') }}">CONTACT US</a></li>
+	    <li><a href="#cart"><i class="icon-shopping-cart"></i>CART</a></li>
          
-	<div class="pull-right">
-    {% if g.user.is_authenticated() %}
-        <a href="{{ url_for('logout') }}" role="button" class="btn btn-primary">Log Out</a>
-    {% else %}
-        <a href="#logIn" role="button" class="btn btn-success marginnav" data-toggle="modal" style="margin: 1px 10px;">Log In</a>
-        <a href="#signUp" role="button" class="btn btn-primary" data-toggle="modal">Sign Up</a>
-    {% endif %}	
-	</div>       
     </div>
 	</ul>
 <br>

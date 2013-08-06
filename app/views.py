@@ -1,8 +1,10 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
-from forms import LoginForm
+from forms import LoginForm, ContactForm
 from models import User, ROLE_USER, ROLE_ADMIN
+import stripe
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from app import app, db, lm, oid
+
+from app import app, db, lm, oid, stripe_keys
 
 @lm.user_loader
 def load_user(id):
@@ -34,13 +36,12 @@ def before_request():
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
-@login_required
 def index():
     user = g.user
     form = LoginForm()
     return render_template('home.html', title="Home", form=form, user=user)
 
-@app.route('/store')
+@app.route('/store', methods=['GET','POST'])
 def store():
     user = { 'nickname': 'Miguel' } # fake user
 
@@ -58,7 +59,7 @@ def store():
     return render_template("store.html",
         title = 'Store',
         user = user,
-        comments = comments, form=form)
+        comments = comments, form=form, key=stripe_keys['publishable_key'])
 
 @app.route('/about')
 def about():
@@ -70,10 +71,11 @@ def faq():
     form = LoginForm()
     return render_template('faq.html', title="FAQ",form=form)
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = LoginForm()
-    return render_template('contact.html', title="Contact Us",form=form)
+    contact = ContactForm()
+    return render_template('contact.html', title="Contact Us",form=form, contact=contact)
 
 @app.route('/success')
 def success():
@@ -100,6 +102,25 @@ def logout():
 def producta():
     form= LoginForm()
     return render_template('producta.html', form=form, title="Product A")
+
+@app.route('/charge', methods=['POST'])
+def charge():
+    # Amount in cents
+    amount = 500
+
+    customer = stripe.Customer.create(
+        email='customer@example.com',
+        card=request.form['stripeToken']
+    )
+
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=amount,
+        currency='usd',
+        description='Flask Charge'
+    )
+    form = LoginForm()
+    return render_template('charge.html', amount=amount, form = form)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
