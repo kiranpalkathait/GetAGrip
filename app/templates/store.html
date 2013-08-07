@@ -15,10 +15,32 @@
   		<br><b>Silicone steering wheel grip</b>
   		<br><i>Glow in the dark</i>
 <form action="/charge" method="post">
-    <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-            data-key="{{ key }}"
-            data-description="A Flask Charge"
-            data-amount="500"></script>
+<script src="https://checkout.stripe.com/v2/checkout.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+
+  <button id="customButton">Buy Now</button>
+
+  <script>
+    $('#customButton').click(function(){
+      var token = function(res){
+        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+        $('form').append($input).submit();
+      };
+
+      StripeCheckout.open({
+        key:         'pk_test_czwzkTp2tactuLOEOqbMTRzG',
+        address:     true,
+        amount:      5000,
+        currency:    'usd',
+        name:        'Joes Pistachios',
+        description: 'A bag of Pistachios',
+        panelLabel:  'Checkout',
+        token:       token
+      });
+
+      return false;
+    });
+  </script>
   </form>		
 <button class="btn-block" type="button">Add to 
 Cart</button>
