@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>Admin Panel</title>
+</head>
+
+<body>
+
+  <form action="" method="post" name="productAdd">
+{{form.hidden_tag()}}
+  <p>
+    Please Enter Product Name:<br/>
+    {{prod.name(size=60)}}<br/>
+    Please Enter Product Stock Number:<br/>
+    {{prod.stock}}<br/>
+    Please Enter Product Image URL:<br/>
+    {{prod.image(size=180)}}<br/>
+    Please Enter Product Price:<br/>
+    {{prod.price}}<br/>
+  </p>
+	<p><input type="submit" value="create"></p>
+</body>
+</html>

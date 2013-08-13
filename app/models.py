@@ -33,3 +33,10 @@ class Comment(db.Model):
 
     def __repr__(self):
         return '<Post %r>' % (self.body)
+
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60))
+    stock = db.Column(db.Integer)
+    image = db.Column(db.String(180))
+    price = db.Column(db.Integer)

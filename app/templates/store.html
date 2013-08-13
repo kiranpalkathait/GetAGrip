@@ -8,137 +8,27 @@
 
 {% block content %}
 
-  
- <div class="row" align="center" style= "margin:10px;">
-  	<div class="span3">
-  		<img src="http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_792287912"> 
-  		<br><b>Silicone steering wheel grip</b>
-  		<br><i>Glow in the dark</i>
+{% for p in products %}
+        <div class="row" align="center" style= "margin:10px;">
+        <div class="span3 offset1">
+        <img src="{{p.image}}">
+        <br/><b>{{p.name}}</b>
+
 <form action="/charge" method="post">
-<script src="https://checkout.stripe.com/v2/checkout.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <article>
+      <label>
+        <span>Amount is ${{p.price}}.00</span>
+      </label>
+    </article>
 
-  <button id="customButton">Buy Now</button>
-
-  <script>
-    $('#customButton').click(function(){
-      var token = function(res){
-        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
-        $('form').append($input).submit();
-      };
-
-      StripeCheckout.open({
-        key:         'pk_test_czwzkTp2tactuLOEOqbMTRzG',
-        address:     true,
-        amount:      5000,
-        currency:    'usd',
-        name:        'Joes Pistachios',
-        description: 'A bag of Pistachios',
-        panelLabel:  'Checkout',
-        token:       token
-      });
-
-      return false;
-    });
-  </script>
-  </form>		
-<button class="btn-block" type="button">Add to 
-Cart</button>
-  		
-  		</div>
-  	<div class="span3">
-  		<img src="http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_792287912">
-  		<br><b>Silicone steering wheel grip</b>
-  		<br><i>Glow in the dark</i>
-  		<form action="/charge" method="post">
     <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
             data-key="{{ key }}"
             data-description="A Flask Charge"
-            data-amount="500"></script>
-  </form>		
-		<button class="btn-block" type="button">Add to Cart</button>
-  		
-  		</div>
-  	 <div class="span3">
-  		<img src="http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_792287912"> 
-  		<br><b>Silicone steering wheel grip</b>
-  		<br><i>Glow in the dark</i>
-  		<form action="/charge" method="post">
-    <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-            data-key="{{ key }}"
-            data-description="A Flask Charge"
-            data-amount="500"></script>
-  </form>		
-		<button class="btn-block" type="button">Add to Cart</button>
-  	</div>
-  	 	<div class="span3">
-  		<img src="http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_792287912"> 
-  		<br><b>Silicone steering wheel grip</b>
-  		<br><i>Glow in the dark</i>
-  		<form action="/charge" method="post">
-    <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-            data-key="{{ key }}"
-            data-description="A Flask Charge"
-            data-amount="500"></script>
-  </form>		
-		<button class="btn-block" type="button">Add to Cart</button>
-  	</div>
+            data-amount="{{ p.price*100 }}"></script>
+  </form><button class="btn-block" type="button">Add to Cart</button>
 </div>
-<br>
-<div class="row" align="center" style= "margin:10px;">
-  	<div class="span3">
-  		<img src="http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_792287912"> 
-  		<br><b>Silicone steering wheel grip</b>
-  		<br><i>Glow in the dark</i>
-  		<form action="/charge" method="post">
-    <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-            data-key="{{ key }}"
-            data-description="A Flask Charge"
-            data-amount="500"></script>
-  </form>		
-		<button class="btn-block" type="button">Add to Cart</button>
-  		
-  		</div>
-  	<div class="span3">
-  		<img src="http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_792287912">
-  		<br><b>Silicone steering wheel grip</b>
-  		<br><i>Glow in the dark</i>
-  		<form action="/charge" method="post">
-    <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-            data-key="{{ key }}"
-            data-description="A Flask Charge"
-            data-amount="500"></script>
-  </form>		
-		<button class="btn-block" type="button">Add to Cart</button>
-  		
-  		</div>
-  	 <div class="span3">
-  		<img src="http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_792287912"> 
-  		<br><b>Silicone steering wheel grip</b>
-  		<br><i>Glow in the dark</i>
-  		<form action="/charge" method="post">
-    <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-            data-key="{{ key }}"
-            data-description="A Flask Charge"
-            data-amount="500"></script>
-  </form>		
-		<button class="btn-block" type="button">Add to Cart</button>
-  	</div>
-  	 	<div class="span3">
-  		<img src="http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_792287912"> 
-  		<br><b>Silicone steering wheel grip</b>
-  		<br><i>Glow in the dark</i>
-  		<form action="/charge" method="post">
-    <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-            data-key="{{ key }}"
-            data-description="A Flask Charge"
-            data-amount="500"></script>
-  </form>		
-		<button class="btn-block" type="button">Add to Cart</button>
-  	</div>
+{% endfor %}
 </div>
-</div>
-
 {% endblock  %}
 
 

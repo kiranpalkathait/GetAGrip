@@ -1,9 +1,8 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
-from forms import LoginForm, ContactForm
-from models import User, ROLE_USER, ROLE_ADMIN
+from forms import LoginForm, ContactForm, ProductForm
+from models import User, ROLE_USER, ROLE_ADMIN, Product
 import stripe
 from flask.ext.login import login_user, logout_user, current_user, login_required
-
 from app import app, db, lm, oid, stripe_keys
 
 @lm.user_loader
@@ -43,23 +42,11 @@ def index():
 
 @app.route('/store', methods=['GET','POST'])
 def store():
-    user = { 'nickname': 'Miguel' } # fake user
-
-    comments = [ # fake array of posts
-        { 
-            'author': { 'nickname': 'John' }, 
-            'body': 'Beautiful day in Portland!' 
-        },
-        { 
-            'author': { 'nickname': 'Susan' }, 
-            'body': 'The Avengers movie was so cool!' 
-        }
-            ]
+    products = Product.query.all()
     form = LoginForm()
     return render_template("store.html",
         title = 'Store',
-        user = user,
-        comments = comments, form=form, key=stripe_keys['publishable_key'])
+      form=form, key=stripe_keys['publishable_key'],products=products)
 
 @app.route('/about')
 def about():
@@ -79,8 +66,9 @@ def contact():
 
 @app.route('/success')
 def success():
+    products = Product.query.all()
     form = LoginForm()
-    return render_template('success.html', title="Success!",form=form)
+    return render_template('success.html', title="Success!",form=form, products=products)
 
 @app.route('/login', methods=['GET','POST'])
 @oid.loginhandler
@@ -105,24 +93,20 @@ def producta():
 
 @app.route('/charge', methods=['POST'])
 def charge():
-    # Amount in cents
-    amount = 500
-
-    customer = stripe.Customer.create(
-        email='customer@example.com',
-        card=request.form['stripeToken']
-    )
-
-    charge = stripe.Charge.create(
-        customer=customer.id,
-        amount=amount,
-        currency='usd',
-        description='Flask Charge'
-    )
     form = LoginForm()
-    return render_template('charge.html', amount=amount, form = form)
+    return render_template('charge.html', form = form)
+
+@app.route('/admin', methods=['GET','POST'])
+def admin():
+    form = LoginForm()
+    prod = ProductForm()
+    if prod.validate_on_submit():
+        new = Product(name=prod.name.data, stock=prod.stock.data, image=prod.image.data, price=prod.price.data)
+        db.session.add(new)
+        db.session.commit()
+        flash('Product Added!')
+        return redirect(url_for('store'))
+    return render_template('admin.html', prod=prod, form=form)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
-
-
