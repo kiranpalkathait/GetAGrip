@@ -1,36 +1,21 @@
 #Flask Project GetAGrip's Website#
 
-*URL Mapping
-*Configuration
-*Database
-*Deploying
-*Dependencies
-*Stripe Payments
-*Admin Page
+##Dependencies##
+You may `sudo pip install` all of these  
+stripe
+flask==0.9
+sqlalchemy==0.7.9
+flask-sqlalchemy==0.16
+sql-alchemy-migrate
+flask-whooshalchemy==0.54a
+flask-wtf
+pytz==2013b
+flask-babel==0.8
+flup  
 
-##URL Mapping##
+##Database Scripts
 
-####Views.py####
-The views.py files contains the code that basically maps an html file to a certain url. This is done using a decorator. The basic layout is:  
-`@app.route('/home')  
-def home():  
-return render_template('home.html')`  
-In this code we are creating a page www.bettergrip.net/home and it will GET home.html from our templates folder  
+All database models are in the models.py file contained in the app directory. If you edit that file and need to migrate the database, there is a script in the root directory that you can run to do so. Just enter `python db_migrate.py` and it will upgrade the version. There are other scripts like db_downgrade that are self explanatory.
 
-####Templates####
-In the templates folder we write out all the html files being used in the website. Most files inherit from the file template.html. The inheritance is powered by the Jinja2 templating language (which is built into the flask framework). The general format to inherit is  
-
-`{% extends "template.html" %}  
-      {% block content %}  
-	content of page  
-	{% endblock %}`  
-Jinja2 also has for loops and if statements  
-
-`{% for i in products %} {% endfor %}  
-	{% if user.logged_in %} {% endif %}`  
-As well as variables  
-
-`{{variable}}`  
-
-</body>
-</html>
+##Stripe
+I was using the stripe API to process the payments. I didn't have any of the payment information entered in but go to https://stripe.com to create an account and look at the docs. They're very straightforward and they have flask specific docs at https://stripe.com/docs/checkout/guides/flask
