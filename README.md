@@ -1,16 +1,16 @@
 #Flask Project GetAGrip's Website#
 
 ##Dependencies##
-You may `sudo pip install` all of these  
-stripe
-flask==0.9
-sqlalchemy==0.7.9
-flask-sqlalchemy==0.16
-sql-alchemy-migrate
-flask-whooshalchemy==0.54a
-flask-wtf
-pytz==2013b
-flask-babel==0.8
+You may `sudo pip install` all of these:  
+stripe  
+flask==0.9  
+sqlalchemy==0.7.9  
+flask-sqlalchemy==0.16  
+sql-alchemy-migrate  
+flask-whooshalchemy==0.54a  
+flask-wtf  
+pytz==2013b  
+flask-babel==0.8  
 flup  
 
 ##Database Scripts
