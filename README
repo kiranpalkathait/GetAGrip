@@ -1,1 +1,39 @@
-We're using flask (the python framework) and that's about all i know.
+<html>
+<body>
+	<ul>
+	  <li><a href=#urls>URL Mapping</a></li>
+	  <li><a href=#config>Configuration</a></li>
+	  <li><a href=#database>Database</a></li>
+	  <li><a href=#deploying>Deploying</a></li>
+	  <li><a href=#dependencies>Dependencies</a></li>
+	  <li><a href=#stripe>Stripe Credit Cards</a></li>
+	  <li><a href=#admin>Admin Page</a></li>
+
+<h4 name="urls"><b>Url Mapping</b></h4> <br/>
+
+<h6>Views.py</h6>
+<p> The views.py files contains the code that basically maps an html file to a certain url. This is done using a decorator. The basic layout is:
+<code>@app.route('/home')<br/>
+def home():<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; return render_template('home.html')<br/>
+</code>
+<br/>
+In this code we are creating a page www.bettergrip.net/home and it will GET home.html from our templates folder</p><br/>
+
+<h6>Templates</h6>
+<p>In the templates folder we write out all the html files being used in the website. Most files inherit from the file template.html. The inheritance is powered by the Jinja2 templating language (which is built into the flask framework). The general format to inherit is <br/>
+
+<code>{% extends "template.html" %}</br>
+      {% block content %}<br/>
+	content of page<br/>
+	{% endblock %}<br/></code><br/>
+Jinja2 also has for loops and if statements <br/>
+
+<code>{% for i in products %} {% endfor %}<br/>
+	{% if user.logged_in %} {% endif %}<br/></code><br/>
+As well as variables<br/>
+
+<code>{{variable}}</code><br/>
+
+</body>
+</html>
